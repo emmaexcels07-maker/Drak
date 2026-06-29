@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0b141a; /* Dark background */
+  color: #e0e0e0;
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login Screen - Dark Theme */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  width: 100%;
+  height: 100%;
+}
+
+.login-container h1 {
+  color: #00a884; /* Dark Accent Green */
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.login-container input {
+  width: 320px;
+  height: 45px;
+  margin: 12px 0;
+  background: #222e35;
+  border: 1px solid #222e35;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 16px;
+  color: white;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.login-container input:focus {
+  border: 1px solid #00a884;
+}
+
+.login-container button {
+  width: 320px;
+  height: 45px;
+  margin-top: 25px;
+  background-color: #00a884;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.login-container button:hover {
+  background-color: #008f6e;
+}
+
+/* Chat Window - Full Screen */
+.chat-window {
+  width: 100vw;
+  height: 100vh;
+  background: #0b141a;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  height: 65px;
+  background: #202c33;
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 1px solid #222e35;
+}
+
+.chat-body {
+  flex: 1;
+  width: 100%;
+  background-color: #0b141a;
+  background-image: radial-gradient(#222e35 1px, transparent 1px);
+  background-size: 20px 20px;
+  overflow-y: scroll;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  display: flex;
+  margin: 4px 0;
+}
+
+#you {
+  justify-content: flex-end;
+}
+
+#you .message-content {
+  background-color: #005c4b; /* Dark Sent Bubble */
+  color: #e9edef;
+  border-radius: 8px 8px 0 8px;
+}
+
+#other {
+  justify-content: flex-start;
+}
+
+#other .message-content {
+  background-color: #202c33; /* Dark Received Bubble */
+  color: #e9edef;
+  border-radius: 8px 8px 8px 0;
+}
+
+.message-content {
+  max-width: 350px;
+  min-height: 20px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  font-size: 14.5px;
+  word-break: break-word;
+  box-shadow: 0 1px 0.5px rgba(11,20,26,0.2);
+}
+
+.message-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8696a0;
+  margin-top: 4px;
+  padding: 0 2px;
+}
+
+#author {
+  font-weight: 600;
+  margin: 0;
+}
+
+#time {
+  margin: 0 0 0 15px;
+}
+
+.chat-footer {
+  height: 70px;
+  background-color: #202c33;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.chat-footer input {
+  flex: 1;
+  height: 42px;
+  background-color: #2a3942;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 15px;
+  color: white;
+  outline: none;
+}
+
+.chat-footer input::placeholder {
+  color: #8696a0;
+}
+
+.chat-footer button {
+  border: 0;
+  background: transparent;
+  color: #8696a0;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 10px;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+.chat-footer button:hover {
+  color: #00a884;
+}
