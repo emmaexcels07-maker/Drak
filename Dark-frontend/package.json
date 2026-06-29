@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "serve -s dist"
   },
   "dependencies": {
     "react": "^19.2.7",
@@ -19,6 +19,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
     "oxlint": "^1.69.0",
+    "serve": "^14.2.6",
     "vite": "^8.1.0"
   }
 }
