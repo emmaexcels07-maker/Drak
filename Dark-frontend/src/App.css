@@ -11,6 +11,7 @@ body {
   background-color: #0d1117;
   color: #c9d1d9;
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .App {
@@ -215,6 +216,16 @@ body {
   padding: 0 24px;
 }
 
+.user-profile {
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.user-profile:hover,
+.active-profile {
+  background: #21262d;
+}
+
 .avatar-small {
   width: 32px;
   height: 32px;
@@ -233,8 +244,12 @@ body {
 .chat-window {
   flex: 1;
   height: 100%;
+
   display: flex;
   flex-direction: column;
+
+  align-items: center;
+
   background: #0d1117;
   position: relative;
 }
@@ -250,13 +265,23 @@ body {
 }
 
 .chat-header {
+  width: 100%;
+  max-width: 1100px;
+
   height: 70px;
+
   background: #161b22;
+
   border-bottom: 1px solid #21262d;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   padding: 0 32px;
+
   z-index: 1;
 }
 
@@ -308,17 +333,58 @@ body {
 }
 
 .chat-body {
+  width: 100%;
+
   flex: 1;
+
   overflow-y: auto;
-  padding: 32px 48px;
+
   display: flex;
   flex-direction: column;
+
+  padding: 32px 0; /* remove left/right spacing */
+
   z-index: 1;
+}
+.chat-body::-webkit-scrollbar,
+.channels-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-body::-webkit-scrollbar-thumb,
+.channels-list::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 999px;
+}
+
+.chat-body::-webkit-scrollbar-thumb:hover,
+.channels-list::-webkit-scrollbar-thumb:hover {
+  background: #484f56;
 }
 
 .message {
+  width: 100%;
+
   display: flex;
-  margin: 6px 0;
+
+  margin: 8px 0;
+
+  padding: 0 24px; /* small internal spacing instead */
+}
+
+.send-btn {
+  transform: scale(1);
+  transition:
+    transform .18s ease,
+    filter .2s;
+}
+
+.send-btn:hover {
+  transform: scale(1.05);
+}
+
+.send-btn:active {
+  transform: scale(.95);
 }
 
 #you {
@@ -344,10 +410,15 @@ body {
 }
 
 .message-content {
-  max-width: 420px;
+  max-width: 520px;
+
   padding: 12px 18px;
+
   font-size: 14.5px;
+
   word-break: break-word;
+
+  overflow-wrap: anywhere;
 }
 
 .message-meta {
@@ -368,13 +439,28 @@ body {
 }
 
 .chat-footer {
+  width: 100%;
+  max-width: 1100px;
+
   height: 80px;
+
   background: #161b22;
+
   border-top: 1px solid #21262d;
+
   display: flex;
+
   align-items: center;
+
   padding: 0 32px;
+
   z-index: 1;
+}
+
+.chat-header,
+.chat-footer {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .chat-footer input {
@@ -427,4 +513,250 @@ body {
 
 .send-btn:hover {
   filter: brightness(1.1);
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px) {
+
+  .sidebar {
+    width: 90px;
+  }
+
+  .search-box,
+  .channel-info,
+  .profile-name,
+  .profile-settings-hint {
+    display: none;
+  }
+
+  .sidebar-header {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .user-profile {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .chat-header,
+  .chat-footer {
+    padding: 0 16px;
+  }
+
+  .chat-body {
+    padding: 20px 12px;
+  }
+
+  .message-content {
+    max-width: 70%;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+
+  .main-app-screen {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 72px;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    overflow-x: auto;
+
+    border-right: none;
+
+    border-bottom: 1px solid #21262d;
+  }
+
+  .sidebar-header {
+    display: none;
+  }
+
+  .channels-list {
+    display: flex;
+
+    align-items: center;
+
+    overflow-x: auto;
+
+    padding: 0 12px;
+  }
+
+  .channel-item {
+    min-width: fit-content;
+
+    margin-right: 10px;
+  }
+
+  .user-profile {
+    width: auto;
+
+    border: none;
+
+    padding: 0 16px;
+  }
+
+  .chat-window {
+    width: 100%;
+  }
+
+  .chat-header {
+    height: 64px;
+
+    padding: 0 14px;
+  }
+
+  .chat-header h3 {
+    font-size: 14px;
+  }
+
+  .header-controls {
+    gap: 6px;
+  }
+
+  .ctrl-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .chat-body {
+    padding: 16px 10px;
+  }
+
+  .message {
+    padding: 0 6px;
+  }
+
+  .message-content {
+    max-width: 85%;
+
+    font-size: 14px;
+
+    padding: 10px 14px;
+  }
+
+  .chat-footer {
+    height: 70px;
+
+    padding: 0 10px;
+  }
+
+  .chat-footer input {
+    height: 42px;
+
+    margin: 0 8px;
+
+    font-size: 14px;
+  }
+
+  .send-btn,
+  .attach-btn,
+  .emoji-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .login-card {
+    width: calc(100% - 32px);
+
+    max-width: 420px;
+
+    padding: 36px 24px;
+  }
+
+  .login-card h1 {
+    font-size: 28px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+
+  .chat-header {
+    padding: 0 10px;
+  }
+
+  .active-chat-info {
+    gap: 10px;
+  }
+
+  .avatar-medium {
+    width: 38px;
+    height: 38px;
+  }
+
+  .message-content {
+    max-width: 92%;
+  }
+
+  .chat-footer input {
+    margin: 0 6px;
+  }
+
+  .ctrl-btn {
+    width: 32px;
+    height: 32px;
+
+    font-size: 13px;
+  }
+
+  .login-card {
+    border-radius: 12px;
+  }
+}
+@media (max-width: 900px) {
+  .sidebar {
+    width: 90px;
+  }
+
+  .channel-info,
+  .profile-name,
+  .search-box {
+    display: none;
+  }
+
+  .chat-body {
+    padding: 20px;
+  }
+
+  .chat-footer {
+    padding: 12px;
+  }
+
+  .chat-footer input {
+    margin: 0 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    display: none;
+  }
+
+  .message-content {
+    max-width: 85%;
+  }
+
+  .chat-header {
+    padding: 0 16px;
+  }
+
+  .chat-footer {
+    height: 72px;
+  }
 }
